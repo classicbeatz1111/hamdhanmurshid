@@ -1,0 +1,2113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamdhan Murshid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="cvv.png" type="image/x-icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'space': ['Space Grotesk', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'scroll-left': 'scrollLeft 20s linear infinite',
+                        'pulse-slow': 'pulse 3s infinite',
+                        'spin-slow': 'spin 8s linear infinite',
+                        'typing': 'typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+            }
+
+            to {
+                box-shadow: 0 0 30px rgba(99, 102, 241, 0.6);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes scrollLeft {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent;
+            }
+
+            50% {
+                border-color: #6366f1;
+            }
+        }
+
+        @keyframes bubbleFloat {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        @keyframes bubbleSway {
+
+            0%,
+            100% {
+                transform: translateX(0px);
+            }
+
+            50% {
+                transform: translateX(30px);
+            }
+        }
+
+        .bubble-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(139, 92, 246, 0.3));
+            backdrop-filter: blur(4px);
+            border: 2px solid rgba(99, 102, 241, 0.4);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.1);
+            animation: bubbleFloat linear infinite, bubbleSway ease-in-out infinite;
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .animate-on-scroll.visible {
+            animation: slideUp 0.8s ease-out forwards;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .gradient-border {
+            background: linear-gradient(45deg, #6366f1, #8b5cf6, #06b6d4);
+            padding: 2px;
+            border-radius: 12px;
+        }
+
+        .gradient-border-content {
+            background: #0f172a;
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+
+        .typing-text {
+            overflow: hidden;
+            border-right: 3px solid #6366f1;
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        .tools-scroll {
+            animation: scrollLeft 20s linear infinite;
+        }
+
+        .tools-scroll:hover {
+            animation-play-state: paused;
+        }
+
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0f172a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        /* Footer Animated */
+        .footer-animated {
+            background: rgba(99, 102, 241, 0.2);
+            padding: 60px 20px 30px;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .footer-social {
+            margin-top: 20px;
+        }
+
+        .footer-social .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .footer-social a {
+            display: inline-block;
+            font-size: 18px;
+            color: #ffffff;
+            background: #6366f1;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            line-height: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: white;
+            background: #0f172a;
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 0 10px #0f172a;
+        }
+
+        /* Subtle Animation Glow (Optional) */
+        .footer-animated::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 107, 53, 0.2);
+            filter: blur(80px);
+            animation: moveGlow 8s linear infinite alternate;
+        }
+
+        @keyframes moveGlow {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(100px, 100px);
+            }
+        }
+
+        .footer-cta {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .footer-cta h2 {
+            font-size: 28px;
+            color: #fff;
+            margin-bottom: 10px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .footer-cta p {
+            font-size: 16px;
+            color: #bbb;
+            margin-bottom: 20px;
+            animation: fadeInUp 1.2s ease-in-out;
+        }
+
+        .footer-btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: #6366f1;
+            color: #fff;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1.4s ease-in-out;
+        }
+
+        .footer-btn:hover {
+            background-color: #6366f1;
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 0 12px #6366f1;
+        }
+
+        .offer-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, #6366f1, #0f172a);
+            color: white;
+            display: flex;
+            justify-content: center;
+            z-index: 9999;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-shadow: 0 2px 8px rgb(0 0 0 / 0.2);
+            padding: 12px 20px;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+
+        .offer-popup.hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .offer-content {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            /* center horizontally */
+            align-items: center;
+            /* center vertically */
+            gap: 12px;
+            text-align: center;
+            flex-wrap: wrap;
+        }
+
+        .offer-content p {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 600;
+            flex: 1 1 auto;
+        }
+
+        #close-offer {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0 8px;
+            transition: color 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        #close-offer:hover {
+            color: #ffcc00;
+        }
+
+        @media (max-width: 480px) {
+            .offer-content {
+                flex-direction: column;
+            }
+
+            #close-offer {
+                align-self: center;
+                padding-top: 6px;
+            }
+        }
+
+        /* Custom cursor */
+        .cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #6366f1;
+            /* purple-blue border */
+            border-radius: 50%;
+            pointer-events: none;
+            /* So it doesn't block clicks */
+            transform: translate(-50%, -50%);
+            transition: background-color 0.3s ease, transform 0.15s ease, border-color 0.3s ease;
+            z-index: 99999;
+            mix-blend-mode: difference;
+        }
+
+        /* Different cursor states */
+        .cursor.hover-btn {
+            background-color: #6366f1;
+            transform: translate(-50%, -50%) scale(1.5);
+            border-color: #0f172a;
+        }
+
+        .cursor.hover-link {
+            background-color: transparent;
+            border-color: #ffcc00;
+            width: 30px;
+            height: 30px;
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
+        .cursor.hover-special {
+            background-color: #0f172a;
+            border-color: #6366f1;
+            width: 40px;
+            height: 40px;
+            transform: translate(-50%, -50%) scale(1.3);
+        }
+
+        /* Responsive: On touch devices, show default cursor */
+        @media (hover: none),
+        (pointer: coarse) {
+            body {
+                cursor: auto;
+            }
+
+            .cursor {
+                display: none;
+            }
+        }
+
+        /* Message Container */
+        .message-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 10000;
+            font-family: Arial, sans-serif;
+        }
+
+        #message-btn {
+            font-size: 2rem;
+            background: #6366f1;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgb(0 0 0 / 0.2);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        /* Contact Options */
+        .contact-options {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            padding: 10px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transform: translateY(0);
+            transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .contact-options.hidden {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        .contact-options a,
+        #close-options-btn {
+            color: white;
+            font-size: 1.8rem;
+            text-decoration: none;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgb(0 0 0 / 0.2);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .contact-options a {
+            background: #25d366;
+            /* WhatsApp Green */
+        }
+
+        .contact-options a:nth-child(2) {
+            background: #0078FF;
+            /* Facebook Messenger Blue */
+        }
+
+        #close-options-btn {
+            background: #0078FF;
+            /* Close button blue */
+        }
+
+        #message-btn.open {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Hover effects */
+        .contact-options a:hover {
+            transform: scale(1.1);
+        }
+
+        #close-options-btn:hover {
+            transform: scale(1.1);
+            background: #E4405F;
+            /* Example hover color for close */
+        }
+
+        .name-link {
+            text-decoration: none;
+            color: inherit;
+            /* keeps same text color */
+        }
+
+        .name-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-white font-space overflow-x-hidden">
+    <!-- Animated Bubble Background -->
+    <div class="bubble-container" id="bubbleContainer"></div>
+
+    <!-- Loading Animation -->
+    <div id="loader" class="loader">
+        <div class="flex flex-col items-center justify-center">
+            <div class="relative w-24 h-24 mb-6 flex items-center justify-center">
+                <svg class="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="40" stroke="#1e293b" stroke-width="8" fill="none" />
+                    <circle id="progress-circle" cx="50" cy="50" r="40" stroke="#6366f1" stroke-width="8" fill="none"
+                        stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round"
+                        class="transition-all duration-100 ease-out" />
+                </svg>
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <span id="progress-text" class="text-2xl font-bold text-indigo-400">0%</span>
+                </div>
+            </div>
+            <p class="text-indigo-400 text-lg text-center">Loading Portfolio...</p>
+        </div>
+    </div>
+
+    <!-- OFFER POPUP BAR -->
+    <div id="offer-popup" class="offer-popup hidden">
+        <div class="offer-content">
+            <p>Meet <a href="http://wa.me/+94741197336" target="_blank" rel="noopener" class="name-link"><strong>Hamdhan
+                        Murshid</strong></a> Building trust through design and code</p>
+
+            <button id="close-offer" aria-label="Close Offer Popup">&times;</button>
+        </div>
+    </div>
+
+
+
+    <!-- Mobile Menu Button -->
+    <button id="mobile-menu-btn"
+        class="fixed top-6 right-6 z-50 md:hidden bg-slate-800/80 backdrop-blur-md w-12 h-12 rounded-full flex items-center justify-center border border-slate-700/50 text-white opacity-0 transition-all duration-500">
+        <i class="fas fa-bars text-lg"></i>
+    </button>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-40 bg-slate-900/95 backdrop-blur-md transform translate-x-full transition-transform duration-300 md:hidden">
+        <div class="flex flex-col items-center justify-center h-full space-y-8">
+            <a href="#home"
+                class="text-2xl font-medium hover:text-indigo-400 transition-colors duration-300 mobile-nav-link">Home</a>
+            <a href="#portfolio"
+                class="text-2xl font-medium hover:text-indigo-400 transition-colors duration-300 mobile-nav-link">Portfolio</a>
+            <a href="#about"
+                class="text-2xl font-medium hover:text-indigo-400 transition-colors duration-300 mobile-nav-link">About</a>
+            <a href="#contact"
+                class="text-2xl font-medium hover:text-indigo-400 transition-colors duration-300 mobile-nav-link">Contact</a>
+            <button id="close-mobile-menu"
+                class="absolute top-14 right-6 w-12 h-12 rounded-full bg-slate-800/50 flex items-center justify-center text-white">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="fixed top-20 left-1/2 transform -translate-x-1/2 z-40 bg-slate-800/80 backdrop-blur-md rounded-full px-8 py-4 border border-slate-700/50 animate-fade-in opacity-0 transition-all duration-500 hidden md:block"
+        id="navbar">
+        <div class="flex items-center space-x-8">
+            <a href="#home" class="text-sm font-medium hover:text-indigo-400 transition-colors duration-300">Home</a>
+            <a href="#portfolio"
+                class="text-sm font-medium hover:text-indigo-400 transition-colors duration-300">Portfolio</a>
+            <a href="#about" class="text-sm font-medium hover:text-indigo-400 transition-colors duration-300">About</a>
+            <a href="#contact"
+                class="text-sm font-medium hover:text-indigo-400 transition-colors duration-300">Contact</a>
+        </div>
+    </nav>
+
+    <div class="message-container">
+        <button id="message-btn" aria-label="Open contact options">
+            💬
+        </button>
+
+        <div id="contact-options" class="contact-options hidden">
+            <a href="https://wa.me/+94741197336" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="mailto:classicbeatz1111@gmail.com" target="_blank" rel="noopener" aria-label="Send Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+            <button id="close-options-btn" aria-label="Close contact options">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div class="fixed bottom-6 left-6 z-50">
+        <button onclick="scrollToTop()" id="backToTop"
+            class="bg-indigo-600 hover:bg-indigo-700 w-12 h-12 rounded-full flex items-center justify-center text-white opacity-0 transition-all duration-300 transform translate-y-4">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <!-- Floating Tool Icons -->
+        <div class="absolute inset-0 overflow-hidden">
+            <!-- Development Tools -->
+            <div class="absolute top-20 left-10 opacity-20 animate-float cursor-move draggable-icon" draggable="true">
+                <i class="fab fa-react text-cyan-400 text-4xl pointer-events-none"></i>
+            </div>
+            <div class="absolute top-20 left-10 opacity-20 animate-float cursor-move draggable-icon" draggable="true">
+                <i class="fab fa-adobe text-blue-600 text-4xl pointer-events-none"></i> <!-- Adobe general -->
+            </div>
+
+            <div class="absolute top-20 left-10 opacity-20 animate-float cursor-move draggable-icon" draggable="true">
+                <i class="fab fa-creative-commons-sampling text-blue-500 text-4xl pointer-events-none"></i>
+                <!-- No direct PS icon in FA -->
+            </div>
+
+            <div class="absolute top-32 right-16 opacity-15 animate-float cursor-move draggable-icon" draggable="true"
+                style="animation-delay: -1s;">
+                <i class="fab fa-js-square text-yellow-400 text-3xl pointer-events-none"></i>
+            </div>
+            <div class="absolute bottom-32 left-20 opacity-25 animate-float cursor-move draggable-icon" draggable="true"
+                style="animation-delay: -2s;">
+                <i class="fab fa-html5 text-orange-400 text-3xl pointer-events-none"></i>
+            </div>
+            <div class="absolute top-1/3 right-10 opacity-20 animate-float cursor-move draggable-icon" draggable="true"
+                style="animation-delay: -3s;">
+                <i class="fab fa-css3-alt text-blue-400 text-3xl pointer-events-none"></i>
+            </div>
+            <div class="absolute bottom-20 right-32 opacity-15 animate-float cursor-move draggable-icon"
+                draggable="true" style="animation-delay: -4s;">
+                <i class="fab fa-node-js text-green-400 text-4xl pointer-events-none"></i>
+            </div>
+
+            <!-- Design Tools -->
+            <div class="absolute top-1/4 left-32 opacity-20 animate-float cursor-move draggable-icon" draggable="true"
+                style="animation-delay: -0.5s;">
+                <i class="fab fa-figma text-pink-400 text-3xl pointer-events-none"></i>
+            </div>
+            <div class="absolute bottom-1/3 right-20 opacity-25 animate-float cursor-move draggable-icon"
+                draggable="true" style="animation-delay: -1.5s;">
+                <i class="fas fa-paint-brush text-purple-400 text-3xl pointer-events-none"></i>
+            </div>
+            <div class="absolute top-1/2 left-16 opacity-15 animate-float cursor-move draggable-icon" draggable="true"
+                style="animation-delay: -2.5s;">
+                <i class="fab fa-adobe text-red-400 text-3xl pointer-events-none"></i>
+            </div>
+
+            <!-- Additional Tech Icons -->
+            <div class="absolute top-16 right-1/4 opacity-20 animate-float cursor-move draggable-icon" draggable="true"
+                style="animation-delay: -3.5s;">
+                <i class="fab fa-git-alt text-orange-500 text-3xl pointer-events-none"></i>
+            </div>
+            <div class="absolute bottom-16 left-1/3 opacity-15 animate-float cursor-move draggable-icon"
+                draggable="true" style="animation-delay: -4.5s;">
+                <i class="fab fa-github text-gray-400 text-3xl pointer-events-none"></i>
+            </div>
+            <div class="absolute top-2/3 right-1/3 opacity-25 animate-float cursor-move draggable-icon" draggable="true"
+                style="animation-delay: -5s;">
+                <i class="fab fa-docker text-blue-500 text-3xl pointer-events-none"></i>
+            </div>
+            <div class="absolute bottom-1/4 left-1/4 opacity-20 animate-float cursor-move draggable-icon"
+                draggable="true" style="animation-delay: -5.5s;">
+                <i class="fab fa-aws text-yellow-600 text-3xl pointer-events-none"></i>
+            </div>
+
+            <!-- Blockchain & Web3 Icons -->
+            <div class="absolute top-3/4 right-16 opacity-15 animate-float cursor-move draggable-icon" draggable="true"
+                style="animation-delay: -6s;">
+                <i class="fab fa-ethereum text-purple-500 text-4xl pointer-events-none"></i>
+            </div>
+            <div class="absolute top-1/6 left-1/2 opacity-20 animate-float cursor-move draggable-icon" draggable="true"
+                style="animation-delay: -6.5s;">
+                <i class="fab fa-bitcoin text-yellow-500 text-3xl pointer-events-none"></i>
+            </div>
+
+            <!-- Mobile responsive hidden icons for smaller screens -->
+            <div class="hidden lg:block absolute top-1/5 right-1/2 opacity-15 animate-float cursor-move draggable-icon"
+                draggable="true" style="animation-delay: -7s;">
+                <i class="fas fa-database text-green-500 text-3xl pointer-events-none"></i>
+            </div>
+            <div class="hidden lg:block absolute bottom-1/5 right-1/4 opacity-20 animate-float cursor-move draggable-icon"
+                draggable="true" style="animation-delay: -7.5s;">
+                <i class="fab fa-python text-blue-600 text-3xl pointer-events-none"></i>
+            </div>
+        </div>
+
+        <div class="text-center z-14 px-10 max-w-4xl mx-auto mt-32">
+            <div class="animate-slide-up">
+                <!-- Profile Circle -->
+                <div class="relative w-40 h-40 mx-auto mb-8 group mt-1">
+                    <div
+                        class="w-40 h-40 rounded-full bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 p-1 hover:scale-110 transition-transform duration-300">
+                        <div
+                            class="w-full h-full rounded-full bg-slate-900 flex items-center justify-center overflow-hidden relative">
+                            <!-- Flash effect overlay -->
+                            <div
+                                class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out">
+                            </div>
+                            <!-- Profile Image -->
+                            <div
+                                class="w-36 h-36 rounded-full bg-gradient-to-br from-indigo-400/20 to-purple-400/20 flex items-center justify-center overflow-hidden">
+                                <img src="k.png" alt="Profile Image" class="w-full h-full object-cover rounded-full" />
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <p class="text-base sm:text-lg text-indigo-400 mb-2">Hello, I'm</p>
+                    <h2
+                        class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent whitespace-nowrap">
+                        Hamdhan Murshid
+                    </h2>
+                </div>
+                <div class="h-12 sm:h-16 mb-8">
+                    <p class="text-xl sm:text-2xl md:text-3xl text-slate-300">
+                        <span id="typewriter-text" class="border-r-2 border-indigo-400"></span>
+                    </p>
+                </div>
+                <p class="text-base sm:text-lg text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed px-4">
+
+                    I craft stunning visuals, seamless websites, and user experiences that convert.
+                    Bringing ideas to life through creative design and clean code.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <button onclick="document.getElementById('portfolio').scrollIntoView({behavior: 'smooth'})"
+                        class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 border-0 outline-none">
+                        <i class="fas fa-eye mr-2"></i>View My Work
+                    </button>
+                    <a href="https://calendly.com/classicbeatz1111/30mintalk" target="_blank"
+                        class="border border-indigo-500 text-indigo-400 hover:bg-indigo-500 hover:text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 outline-none inline-flex items-center">
+                        <i class="fa fa-calendar mr-2"></i>Book 1:1 Consultation
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 relative">
+                    <span class="relative z-10">Featured Work</span>
+                    <div class="absolute inset-0 opacity-50" style="animation: cyberpunkGlow 4s ease-in-out infinite;">
+                    </div>
+                </h2>
+                <p class="text-slate-400 text-lg max-w-2xl mx-auto">A showcase of my recent work and projects</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div
+                    class="bg-slate-800/50 rounded-xl p-6 border border-slate-700/50 hover:border-indigo-500/50 transition-all duration-300 group cursor-pointer animate-on-scroll">
+                    <div
+                        class="h-48 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-lg mb-4 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+                        <!-- Replace the icon with an image -->
+                        <img src="v.png" alt="Web Design Preview" class="w-full h-full object-cover" />
+                    </div>
+
+                    <h3 class="text-xl font-semibold mb-2">Web Design & Dev 01</h3>
+                    <p class="text-slate-400 text-sm mb-4">
+                        A modern graphic design portfolio by Hamdhan, showcasing creative work
+                        across branding, posters, and digital art with a clean, interactive
+                        interface.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded">HTML</span>
+                        <span class="text-xs bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded">CSS</span>
+                        <span class="text-xs bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded">JS</span>
+                        <a href="hhttps://web.facebook.com/classicbeatzofficial/" target="_blank"
+                            rel="noopener noreferrer" aria-label="External Link">
+                            <i class="fas fa-external-link-alt text-slate-400 hover:text-indigo-400 cursor-pointer"></i>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div
+                    class="bg-slate-800/50 rounded-xl p-6 border border-slate-700/50 hover:border-indigo-500/50 transition-all duration-300 group cursor-pointer animate-on-scroll">
+                    <div
+                        class="h-48 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-lg mb-4 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+                        <!-- Replace the icon with an image -->
+                        <img src="h.png" alt="Web Design Preview" class="w-full h-full object-cover" />
+                    </div>
+
+                    <h3 class="text-xl font-semibold mb-2">Web Design & Dev 02</h3>
+                    <p class="text-slate-400 text-sm mb-4">
+                        Professional portfolio by Hamdhan — showcasing modern web design, responsive layouts, sleek
+                        UI/UX, and creative digital solutions.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded">HTML</span>
+                        <span class="text-xs bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded">CSS</span>
+                        <span class="text-xs bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded">JS</span>
+                        <a href="hhttps://web.facebook.com/classicbeatzofficial/" target="_blank"
+                            rel="noopener noreferrer" aria-label="External Link">
+                            <i class="fas fa-external-link-alt text-slate-400 hover:text-indigo-400 cursor-pointer"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-slate-800/50 rounded-xl p-6 border border-slate-700/50 hover:border-indigo-500/50 transition-all duration-300 group cursor-pointer animate-on-scroll">
+                    <div
+                        class="h-48 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-lg mb-4 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+                        <!-- Replace the icon with an image -->
+                        <img src="mob.jpeg" alt="Web Design Preview" class="w-full h-full object-cover" />
+                    </div>
+
+                    <h3 class="text-xl font-semibold mb-2">Ui Design</h3>
+                    <p class="text-slate-400 text-sm mb-4">
+                        Crafted a clean, intuitive UI design for FOODBIE — a modern food delivery app focused on
+                        user-friendly navigation and appetizing visuals.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded">Figma</span>
+                        <span class="text-xs bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded">Intuitive</span>
+                        <span class="text-xs bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded">Responsive</span>
+                        <a href="hhttps://web.facebook.com/classicbeatzofficial/" target="_blank"
+                            rel="noopener noreferrer" aria-label="External Link">
+                            <i class="fas fa-external-link-alt text-slate-400 hover:text-indigo-400 cursor-pointer"></i>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div
+                    class="bg-slate-800/50 rounded-xl p-6 border border-slate-700/50 hover:border-indigo-500/50 transition-all duration-300 group cursor-pointer animate-on-scroll">
+                    <div
+                        class="h-48 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-lg mb-4 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+                        <!-- Replace the icon with an image -->
+                        <img src="NEW.png" alt="Web Design Preview" class="w-full h-full object-cover" />
+                    </div>
+
+                    <h3 class="text-xl font-semibold mb-2">Banner Design</h3>
+                    <p class="text-slate-400 text-sm mb-4">
+                        Designed vibrant and eye-catching banners that grab attention, convey clear messages, and drive
+                        engagement across multiple platforms.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded">Bold</span>
+                        <span class="text-xs bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded">Clear Messaging</span>
+                        <span class="text-xs bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded">Eye-catching</span>
+                        <a href="hhttps://web.facebook.com/classicbeatzofficial/" target="_blank"
+                            rel="noopener noreferrer" aria-label="External Link">
+                            <i class="fas fa-external-link-alt text-slate-400 hover:text-indigo-400 cursor-pointer"></i>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div
+                    class="bg-slate-800/50 rounded-xl p-6 border border-slate-700/50 hover:border-indigo-500/50 transition-all duration-300 group cursor-pointer animate-on-scroll">
+                    <div
+                        class="h-48 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-lg mb-4 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+                        <!-- Replace the icon with an image -->
+                        <img src="4.png" alt="Web Design Preview" class="w-full h-full object-cover" />
+                    </div>
+
+                    <h3 class="text-xl font-semibold mb-2">logo Design</h3>
+                    <p class="text-slate-400 text-sm mb-4">
+                        Crafted a unique and memorable logo that captures the brand's identity, ensuring instant
+                        recognition and professional appeal.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded">Memorable</span>
+                        <span class="text-xs bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded">Versatile</span>
+                        <span class="text-xs bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded">Simple</span>
+                        <a href="hhttps://web.facebook.com/classicbeatzofficial/" target="_blank"
+                            rel="noopener noreferrer" aria-label="External Link">
+                            <i class="fas fa-external-link-alt text-slate-400 hover:text-indigo-400 cursor-pointer"></i>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div
+                    class="bg-slate-800/50 rounded-xl p-6 border border-slate-700/50 hover:border-indigo-500/50 transition-all duration-300 group cursor-pointer animate-on-scroll">
+                    <div
+                        class="h-48 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-lg mb-4 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+                        <!-- Replace the icon with an image -->
+                        <img src="mu.jpeg" alt="Web Design Preview" class="w-full h-full object-cover" />
+                    </div>
+
+                    <h3 class="text-xl font-semibold mb-2">Social Media Post</h3>
+                    <p class="text-slate-400 text-sm mb-4">
+                        Crafted eye-catching and scroll-stopping social media posts tailored for maximum engagement and
+                        visual appeal across platforms like Instagram and Facebook.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded">Engaging</span>
+                        <span class="text-xs bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded">Shareable</span>
+                        <span class="text-xs bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded">Visual Impact</span>
+                        <a href="hhttps://web.facebook.com/classicbeatzofficial/" target="_blank"
+                            rel="noopener noreferrer" aria-label="External Link">
+                            <i class="fas fa-external-link-alt text-slate-400 hover:text-indigo-400 cursor-pointer"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-20 px-4 bg-slate-800/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 text-center">
+                <div class="animate-on-scroll">
+                    <div
+                        class="bg-slate-800/50 rounded-xl p-6 border border-slate-700/50 hover:border-indigo-500/50 transition-all duration-300">
+                        <i class="fas fa-smile text-4xl text-indigo-400 mb-4"></i>
+                        <div class="text-3xl font-bold text-white mb-2">
+                            <span class="counter" data-target="150">0</span>+
+                        </div>
+                        <p class="text-slate-400">Happy Clients</p>
+                    </div>
+                </div>
+                <div class="animate-on-scroll">
+                    <div
+                        class="bg-slate-800/50 rounded-xl p-6 border border-slate-700/50 hover:border-purple-500/50 transition-all duration-300">
+                        <i class="fas fa-project-diagram text-4xl text-purple-400 mb-4"></i>
+                        <div class="text-3xl font-bold text-white mb-2">
+                            <span class="counter" data-target="200">0</span>+
+                        </div>
+                        <p class="text-slate-400">Projects Done</p>
+                    </div>
+                </div>
+                <div class="animate-on-scroll">
+                    <div
+                        class="bg-slate-800/50 rounded-xl p-6 border border-slate-700/50 hover:border-cyan-500/50 transition-all duration-300">
+                        <i class="fas fa-smile text-4xl text-cyan-400 mb-4"></i>
+                        <div class="text-3xl font-bold text-white mb-2">
+                            <span class="counter" data-target="98">98</span>%
+                        </div>
+                        <p class="text-slate-400">Client Satisfaction</p>
+                    </div>
+                </div>
+                <div class="animate-on-scroll">
+                    <div
+                        class="bg-slate-800/50 rounded-xl p-6 border border-slate-700/50 hover:border-green-500/50 transition-all duration-300">
+                        <i class="fas fa-clock text-4xl text-green-400 mb-4"></i>
+                        <div class="text-3xl font-bold text-white mb-2">
+                            <span class="counter" data-target="3">0</span>+
+                        </div>
+                        <p class="text-slate-400">Years Of Experience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 bg-slate-800/30">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+                <div class="animate-on-scroll">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-8">About Me</h2>
+                    <p class="text-slate-300 text-lg mb-6 leading-relaxed">
+                        I’m Hamdhan Murshid — a passionate graphic designer, web designer, and developer with over 3
+                        years of hands-on experience building digital experiences that actually matter. What started as
+                        a simple curiosity about how things tick quickly turned into a full-blown love affair with
+                        crafting sleek, beautiful, and functional solutions.
+
+                        I believe design isn’t just about looking good — it’s about solving problems, telling stories,
+                        and making genuine connections between people and technology. Whether I’m sketching a logo,
+                        writing clean code, or perfecting a user interface, my goal is always the same: create work
+                        that’s meaningful, memorable, and a little bit magical.
+
+
+
+
+                    </p>
+                    <p class="text-slate-400 leading-relaxed mb-8">
+                        When I’m not deep in pixels or lines of code, you’ll catch me geeking out over the latest design
+                        trends, learning new tech tricks, or just savoring that perfect cup of coffee — because every
+                        great idea deserves great fuel.
+                    </p>
+
+                    <!-- Skills Section -->
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-6 text-indigo-400">
+                                <i class="fas fa-code mr-2"></i>Development Skills
+                            </h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700/50">
+                                    <div class="flex items-center mb-2">
+                                        <i class="fab fa-html5 text-orange-400 mr-2"></i>
+                                        <span class="font-medium">HTML</span>
+                                    </div>
+                                    <div class="w-full bg-slate-700 rounded-full h-2">
+                                        <div class="bg-orange-400 h-2 rounded-full" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700/50">
+                                    <div class="flex items-center mb-2">
+                                        <i class="fab fa-css3-alt text-blue-400 mr-2"></i>
+                                        <span class="font-medium">CSS</span>
+                                    </div>
+                                    <div class="w-full bg-slate-700 rounded-full h-2">
+                                        <div class="bg-blue-400 h-2 rounded-full" style="width: 92%"></div>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700/50">
+                                    <div class="flex items-center mb-2">
+                                        <i class="fab fa-js-square text-yellow-400 mr-2"></i>
+                                        <span class="font-medium">JavaScript</span>
+                                    </div>
+                                    <div class="w-full bg-slate-700 rounded-full h-2">
+                                        <div class="bg-yellow-400 h-2 rounded-full" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700/50">
+                                    <div class="flex items-center mb-2">
+                                        <i class="fab fa-php text-cyan-400 mr-2"></i>
+                                        <span class="font-medium">PHP</span>
+                                    </div>
+                                    <div class="w-full bg-slate-700 rounded-full h-2">
+                                        <div class="bg-cyan-400 h-2 rounded-full" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Graphic Design Section -->
+                        <div class="mt-12 gradient-border animate-on-scroll relative overflow-hidden rounded-lg">
+                            <!-- Animated gradient background -->
+                            <div class="absolute inset-0 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 opacity-20"
+                                style="animation: waveAnimation 8s ease-in-out infinite;"></div>
+
+                            <div
+                                class="gradient-border-content relative z-10 flex flex-col lg:flex-row items-center p-6 lg:p-10 gap-8">
+
+                                <!-- Lottie Animation (Graphic Design) -->
+                                <div class="w-full lg:w-1/2 flex justify-center">
+                                    <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_puciaact.json"
+                                        background="transparent" speed="1" loop autoplay
+                                        style="max-width: 350px; width: 100%;">
+                                    </lottie-player>
+                                </div>
+
+                                <!-- Text Content -->
+                                <div class="w-full lg:w-1/2 text-center lg:text-left">
+                                    <h3 class="text-2xl font-semibold mb-4 text-pink-400">
+                                        <i class="fas fa-paint-brush mr-2"></i> Creative Graphic Design
+                                    </h3>
+                                    <p class="text-slate-300 mb-6">
+                                        Innovative and visually stunning designs that communicate your brand’s story
+                                        with impact.
+                                    </p>
+                                    <a href="https://classicbeatz.netlify.app/" target="_blank"
+                                        class="bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 inline-block">
+                                        Explore Designs
+                                    </a>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Coding Section -->
+                        <div class="mt-12 gradient-border animate-on-scroll relative overflow-hidden rounded-lg">
+                            <!-- Animated gradient background -->
+                            <div class="absolute inset-0 bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-600 opacity-20"
+                                style="animation: waveAnimation 8s ease-in-out infinite;"></div>
+
+                            <div
+                                class="gradient-border-content relative z-10 flex flex-col lg:flex-row items-center p-6 lg:p-10 gap-8">
+
+                                <!-- Lottie Animation (Coding) -->
+                                <div class="w-full lg:w-1/2 flex justify-center">
+                                    <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_3rwasyjy.json"
+                                        background="transparent" speed="1" loop autoplay
+                                        style="max-width: 350px; width: 100%;">
+                                    </lottie-player>
+                                </div>
+
+                                <!-- Text Content -->
+                                <div class="w-full lg:w-1/2 text-center lg:text-left">
+                                    <h3 class="text-2xl font-semibold mb-4 text-cyan-400">
+                                        <i class="fas fa-laptop-code mr-2"></i> Passion for Coding
+                                    </h3>
+                                    <p class="text-slate-300 mb-6">
+                                        From crafting sleek front-ends to building robust back-end systems, I combine
+                                        creativity with technical expertise to bring your ideas to life.
+                                    </p>
+                                    <a href="https://cloudgrafix.netlify.app/" target="_blank"
+                                        class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 inline-block">
+                                        Start a Project
+                                    </a>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Include Lottie Player Script -->
+                        <script
+                            src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+                    </div>
+                </div>
+
+                <div class="space-y-8 animate-on-scroll">
+                    <!-- Animated Education -->
+                    <div class="bg-slate-800/50 rounded-xl p-6 border border-slate-700/50">
+                        <h3 class="text-2xl font-semibold mb-6 text-indigo-400">
+                            <i class="fas fa-graduation-cap mr-2"></i>Education
+                        </h3>
+                        <div class="grid gap-4" id="education-timeline">
+                            <div
+                                class="education-item opacity-0 transform translate-x-4 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-lg p-4 border border-indigo-500/20">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-indigo-400 mb-1">2021</div>
+                                    <h4 class="font-semibold text-white">Diploma In Graphic Design - Alison</h4>
+                                    <p class="text-indigo-300 text-sm">Successfully completed a Diploma in Graphic
+                                        Design from Alison, mastering essential design principles, tools, and creative
+                                        techniques to craft compelling visual stories</p>
+                                </div>
+                            </div>
+                            <div
+                                class="education-item opacity-0 transform translate-x-4 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-lg p-4 border border-purple-500/20">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-purple-400 mb-1">2022</div>
+                                    <h4 class="font-semibold text-white">Diploma in Information Technology Management -
+                                        Alison</h4>
+                                    <p class="text-purple-300 text-sm">Completed a comprehensive Diploma in IT
+                                        Management via Alison — covering tech systems, project workflows, and modern
+                                        digital solutions.</p>
+                                </div>
+                            </div>
+                            <div
+                                class="education-item opacity-0 transform translate-x-4 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-lg p-4 border border-cyan-500/20">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-cyan-400 mb-1">2025</div>
+                                    <h4 class="font-semibold text-white">Figma Design Basics and Features - Aison</h4>
+                                    <p class="text-cyan-300 text-sm">Completed Figma Design Basics and Features on
+                                        Alison, gaining hands-on experience in UI/UX fundamentals, design tools, and
+                                        collaborative workflows essential for modern digital product design, and got
+                                        certification for completion.</p>
+                                </div>
+                            </div>
+                            <div
+                                class="education-item opacity-0 transform translate-x-4 bg-gradient-to-r from-green-500/10 to-emerald-500/10 rounded-lg p-4 border border-green-500/20">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-green-400 mb-1">2025</div>
+                                    <h4 class="font-semibold text-white">Diploma in Full Stack Development (R) - Imara
+                                        Software Solution</h4>
+                                    <p class="text-green-300 text-sm">Successfully completed Front-End Development
+                                        training at imTs, mastering HTML, CSS, JavaScript, and React. Currently
+                                        expanding skills by diving into Back-End Development.</p>
+                                </div>
+                            </div>
+                            <div
+                                class="education-item opacity-0 transform translate-x-4 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-lg p-4 border border-yellow-500/20">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-yellow-400 mb-1">2025 - 2028</div>
+                                    <h4 class="font-semibold text-white">Bachelor of Information Technology - BIT (R) -
+                                        Univeristy Of Colombo School Of Computing - UCSC</h4>
+                                    <p class="text-yellow-300 text-sm">Currently pursuing a Bachelor of Information
+                                        Technology (BIT) degree, building a strong foundation in computing, programming,
+                                        and IT systems to advance my tech career.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Experience -->
+                    <div class="bg-slate-800/50 rounded-xl p-6 border border-slate-700/50">
+                        <h3 class="text-2xl font-semibold mb-6 text-purple-400">
+                            <i class="fas fa-briefcase mr-2"></i>Experience
+                        </h3>
+                        <div class="space-y-6 lg:space-y-0 lg:flex lg:space-x-6">
+                            <div
+                                class="relative lg:flex-1 lg:pl-0 pl-8 border-l-2 lg:border-l-0 lg:border-t-2 border-purple-500/30 lg:pt-8">
+                                <div
+                                    class="absolute -left-2 lg:left-0 lg:-top-2 top-0 w-4 h-4 bg-purple-500 rounded-full animate-pulse">
+                                </div>
+                                <div class="bg-purple-500/10 rounded-lg p-4 border border-purple-500/20 h-full">
+                                    <div class="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-2">
+                                        <h4 class="font-semibold text-white text-sm lg:text-base">Logo Designer</h4>
+                                    </div>
+                                    <p class="text-purple-400 text-sm font-medium">HN TAMIL GRAPHIC DESIGN</p>
+                                    <p class="text-slate-400 text-xs">2025 (Present)</p>
+                                    <p class="text-slate-400 text-xs mt-2">
+                                        Creative logo designer specializing in crafting unique, memorable brand
+                                        identities that visually communicate core values and make lasting impression
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                class="relative lg:flex-1 lg:pl-0 pl-8 border-l-2 lg:border-l-0 lg:border-t-2 border-indigo-500/30 lg:pt-8">
+                                <div
+                                    class="absolute -left-2 lg:left-0 lg:-top-2 top-0 w-4 h-4 bg-indigo-500 rounded-full">
+                                </div>
+                                <div class="bg-indigo-500/10 rounded-lg p-4 border border-indigo-500/20 h-full">
+                                    <h4 class="font-semibold text-white mb-2 text-sm lg:text-base">Graphic Designer
+                                    </h4>
+                                    <p class="text-indigo-400 text-sm font-medium">Tarz Graphics</p>
+                                    <p class="text-slate-400 text-xs">2025 (Present)</p>
+                                    <p class="text-slate-400 text-xs mt-2">
+                                        Creative graphic designer specializing in crafting unique, memorable brand
+                                        identities and compelling visuals that communicate core values and leave lasting
+                                        impressions.
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                class="relative lg:flex-1 lg:pl-0 pl-8 border-l-2 lg:border-l-0 lg:border-t-2 border-cyan-500/30 lg:pt-8">
+                                <div
+                                    class="absolute -left-2 lg:left-0 lg:-top-2 top-0 w-4 h-4 bg-cyan-500 rounded-full">
+                                </div>
+                                <div class="bg-cyan-500/10 rounded-lg p-4 border border-cyan-500/20 h-full">
+                                    <h4 class="font-semibold text-white mb-2 text-sm lg:text-base">ClassicBeatz
+                                    </h4>
+                                    <p class="text-cyan-400 text-sm font-medium">Graphic Designer</p>
+                                    <p class="text-slate-400 text-xs">2021 - 2025 (Present)</p>
+                                    <p class="text-slate-400 text-xs mt-2">
+                                        Professional graphic designer and <i>Founder</i>of ClassicBeatz since 2021,
+                                        delivering innovative and customized visual solutions that elevate brands and
+                                        engage audiences with creativity and precision.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="py-16 bg-slate-800/50 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 mb-8">
+            <h3 class="text-3xl font-bold text-center mb-4">Tools & Technologies</h3>
+            <p class="text-slate-400 text-center">Technologies I work with daily</p>
+        </div>
+        <div class="relative">
+            <div class="flex space-x-8 tools-scroll">
+                <div class="flex items-center space-x-2 bg-slate-800 px-6 py-3 rounded-full whitespace-nowrap">
+                    <i class="fab fa-react text-cyan-400 text-xl"></i>
+                    <span>React</span>
+                </div>
+                <div class="flex items-center space-x-2 bg-slate-800 px-6 py-3 rounded-full whitespace-nowrap">
+                    <i class="fab fa-js-square text-yellow-400 text-xl"></i>
+                    <span>JavaScript</span>
+                </div>
+                <div class="flex items-center space-x-2 bg-slate-800 px-6 py-3 rounded-full whitespace-nowrap">
+                    <i class="fab fa-node-js text-green-400 text-xl"></i>
+                    <span>Node.js</span>
+                </div>
+                <div class="flex items-center space-x-2 bg-slate-800 px-6 py-3 rounded-full whitespace-nowrap">
+                    <i class="fab fa-ethereum text-purple-400 text-xl"></i>
+                    <span>Ethereum</span>
+                </div>
+                <div class="flex items-center space-x-2 bg-slate-800 px-6 py-3 rounded-full whitespace-nowrap">
+                    <i class="fab fa-figma text-pink-400 text-xl"></i>
+                    <span>Figma</span>
+                </div>
+                <div class="flex items-center space-x-2 bg-slate-800 px-6 py-3 rounded-full whitespace-nowrap">
+                    <i class="fab fa-git-alt text-orange-400 text-xl"></i>
+                    <span>Git</span>
+                </div>
+                <div class="flex items-center space-x-2 bg-slate-800 px-6 py-3 rounded-full whitespace-nowrap">
+                    <i class="fab fa-docker text-blue-400 text-xl"></i>
+                    <span>Docker</span>
+                </div>
+                <div class="flex items-center space-x-2 bg-slate-800 px-6 py-3 rounded-full whitespace-nowrap">
+                    <i class="fab fa-aws text-yellow-600 text-xl"></i>
+                    <span>AWS</span>
+                </div>
+                <div class="flex items-center space-x-2 bg-slate-800 px-6 py-3 rounded-full whitespace-nowrap">
+                    <i class="fas fa-database text-green-400 text-xl"></i>
+                    <span>MongoDB</span>
+                </div>
+                <div class="flex items-center space-x-2 bg-slate-800 px-6 py-3 rounded-full whitespace-nowrap">
+                    <i class="fab fa-python text-blue-400 text-xl"></i>
+                    <span>Python</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <!-- Section Heading -->
+            <div class="text-center mb-16 animate-on-scroll">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">What We Offer</h2>
+                <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+                    Delivering top-quality design and development services to help your brand grow.
+                </p>
+            </div>
+
+            <!-- Gradient Border Wrapper -->
+            <div class="gradient-border animate-on-scroll relative overflow-hidden rounded-lg">
+                <!-- Animated background -->
+                <div class="absolute inset-0 bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-600 opacity-20"
+                    style="animation: waveAnimation 8s ease-in-out infinite;"></div>
+
+                <!-- Content -->
+                <div class="gradient-border-content relative z-10 px-6 py-10">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                        <!-- Service 1 -->
+                        <div
+                            class="bg-slate-700/50 border border-slate-600 rounded-lg p-6 hover:border-indigo-500 transition-colors">
+                            <i class="fas fa-paint-brush text-4xl text-indigo-400 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-3">Creative Web Design</h3>
+                            <p class="text-slate-300">
+                                Custom, responsive, and visually appealing designs that make your brand unforgettable.
+                            </p>
+                            <a href="http://wa.me/+94741197336" target="_blank" class="mt-2 w-full inline-block text-center bg-indigo-500 text-white font-medium py-2 px-4 rounded-lg 
+          hover:bg-indigo-600 transition-colors">
+                                Get Free Quote
+                            </a>
+
+                        </div>
+
+                        <!-- Service 2 -->
+                        <div
+                            class="bg-slate-700/50 border border-slate-600 rounded-lg p-6 hover:border-purple-500 transition-colors">
+                            <i class="fas fa-code text-4xl text-purple-400 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-3">Web Development</h3>
+                            <p class="text-slate-300">
+                                Clean, modern, and high-performance coding for seamless functionality and scalability.
+                            </p>
+                            <a href="http://wa.me/+94741197336" target="_blank" class="mt-2 w-full inline-block text-center bg-indigo-500 text-white font-medium py-2 px-4 rounded-lg 
+          hover:bg-indigo-600 transition-colors">
+                                Get Free Quote
+                            </a>
+
+                        </div>
+
+                        <!-- Service 3 -->
+                        <div
+                            class="bg-slate-700/50 border border-slate-600 rounded-lg p-6 hover:border-cyan-500 transition-colors">
+                            <i class="fas fa-bullhorn text-4xl text-cyan-400 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-3">Graphic Design</h3>
+                            <p class="text-slate-300">
+                                Innovative and visually stunning designs that communicate your brand’s story with
+                                impact.
+                            </p>
+                            <a href="http://wa.me/+94741197336" target="_blank" class="mt-2 w-full inline-block text-center bg-indigo-500 text-white font-medium py-2 px-4 rounded-lg 
+          hover:bg-indigo-600 transition-colors">
+                                Get Free Quote
+                            </a>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-animated">
+        <div class="footer-cta">
+            <h2>Let's Work Together</h2>
+            <p>Ready to start your next project? Let's create something amazing together.</p>
+            <a href="http://wa.me/+94741197336" target="_blank" class="footer-btn">Get In Touch</a>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 <a href="#home" target="_blank" style="text-decoration: none; color: inherit;"
+                    onmouseover="this.style.textDecoration='underline'"
+                    onmouseout="this.style.textDecoration='none'"><b>Hamdhan Murshid</b></a> All rights reserved.</p>
+            </p>
+            <div class="footer-social">
+                <div class="social-icons">
+                    <a href="https://whatsapp.com/channel/0029VbBWBOv3LdQO9Iteso1q" target="_blank" class="social-link"
+                        target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://web.facebook.com/classicbeatzofficial/" target="_blank" class="social-link"><i
+                            class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/classicbeatzofficialz" target="_blank" class="social-link"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.behance.net/classicbeatz-gd" target="_blank" class="social-link"><i
+                            class="fab fa-behance"></i></a>
+                    <a href="https://github.com/" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="cursor"></div>
+            <script>
+                // Typewriter effect
+                const typewriterText = document.getElementById('typewriter-text');
+                const texts = [
+                    'Graphic Designer',
+                    'UI/UX Designer',
+                    'Frontend Developer',
+                    'Backend Developer',
+                    'Creative Designer',
+                ];
+                let textIndex = 0;
+                let charIndex = 0;
+                let isDeleting = false;
+                let typeSpeed = 100;
+
+                function typeWriter() {
+                    const currentText = texts[textIndex];
+
+                    if (isDeleting) {
+                        typewriterText.textContent = currentText.substring(0, charIndex - 1);
+                        charIndex--;
+                        typeSpeed = 50;
+                    } else {
+                        typewriterText.textContent = currentText.substring(0, charIndex + 1);
+                        charIndex++;
+                        typeSpeed = 100;
+                    }
+
+                    if (!isDeleting && charIndex === currentText.length) {
+                        typeSpeed = 2000; // Pause at end
+                        isDeleting = true;
+                    } else if (isDeleting && charIndex === 0) {
+                        isDeleting = false;
+                        textIndex = (textIndex + 1) % texts.length;
+                        typeSpeed = 500; // Pause before next word
+                    }
+
+                    setTimeout(typeWriter, typeSpeed);
+                }
+
+                // Bubble animation
+                function createBubble() {
+                    const bubble = document.createElement('div');
+                    bubble.classList.add('bubble');
+
+                    // Random size between 10px and 80px
+                    const size = Math.random() * 70 + 10;
+                    bubble.style.width = size + 'px';
+                    bubble.style.height = size + 'px';
+
+                    // Random horizontal position
+                    bubble.style.left = Math.random() * 100 + '%';
+
+                    // Random animation duration between 8-15 seconds
+                    const duration = Math.random() * 7 + 8;
+                    bubble.style.animationDuration = `${duration}s, ${duration * 0.8}s`;
+
+                    // Random delay for sway animation
+                    bubble.style.animationDelay = `0s, ${Math.random() * 2}s`;
+
+                    // Random opacity
+                    bubble.style.opacity = Math.random() * 0.3 + 0.1;
+
+                    // Add different gradient colors randomly
+                    const colors = [
+                        'linear-gradient(135deg, rgba(99, 102, 241, 0.4), rgba(139, 92, 246, 0.4))',
+                        'linear-gradient(135deg, rgba(139, 92, 246, 0.4), rgba(6, 182, 212, 0.4))',
+                        'linear-gradient(135deg, rgba(6, 182, 212, 0.4), rgba(99, 102, 241, 0.4))',
+                        'linear-gradient(135deg, rgba(168, 85, 247, 0.4), rgba(236, 72, 153, 0.4))',
+                        'linear-gradient(135deg, rgba(34, 197, 94, 0.4), rgba(59, 130, 246, 0.4))'
+                    ];
+                    bubble.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+                    // Add border colors to match
+                    const borderColors = [
+                        'rgba(99, 102, 241, 0.6)',
+                        'rgba(139, 92, 246, 0.6)',
+                        'rgba(6, 182, 212, 0.6)',
+                        'rgba(168, 85, 247, 0.6)',
+                        'rgba(34, 197, 94, 0.6)'
+                    ];
+                    bubble.style.borderColor = borderColors[Math.floor(Math.random() * borderColors.length)];
+
+                    document.getElementById('bubbleContainer').appendChild(bubble);
+
+                    // Remove bubble after animation completes
+                    setTimeout(() => {
+                        if (bubble.parentNode) {
+                            bubble.parentNode.removeChild(bubble);
+                        }
+                    }, duration * 1000);
+                }
+
+                // Create bubbles continuously
+                function startBubbleAnimation() {
+                    createBubble();
+                    // Create new bubble every 800ms to 2000ms
+                    setTimeout(startBubbleAnimation, Math.random() * 1200 + 800);
+                }
+
+                // Loading animation with progress
+                window.addEventListener('DOMContentLoaded', function () {
+                    const progressCircle = document.getElementById('progress-circle');
+                    const progressText = document.getElementById('progress-text');
+                    const circumference = 2 * Math.PI * 40; // 2πr where r=40
+                    let progress = 0;
+
+                    const updateProgress = () => {
+                        if (progress <= 100) {
+                            const offset = circumference - (progress / 100) * circumference;
+                            progressCircle.style.strokeDashoffset = offset;
+                            progressText.textContent = progress + '%';
+                            progress += 10; // Faster progress
+                            setTimeout(updateProgress, 50);
+                        } else {
+                            setTimeout(() => {
+                                document.getElementById('loader').classList.add('hidden');
+                                document.getElementById('navbar').style.opacity = '1';
+                                document.getElementById('mobile-menu-btn').style.opacity = '1';
+                                typeWriter(); // Start typewriter effect
+                                showPromoPopup(); // Show promotional popup
+                                startBubbleAnimation(); // Start bubble animation
+                                initAnimatedGraphics(); // Initialize all animated graphics
+                            }, 200);
+                        }
+                    };
+
+                    updateProgress();
+                });
+
+                // Promotional popup functions
+                function showPromoPopup() {
+                    setTimeout(() => {
+                        document.getElementById('promo-popup').style.transform = 'translateY(0)';
+                    }, 1000); // Show after 1 second
+                }
+
+                function closePromoPopup() {
+                    document.getElementById('promo-popup').style.transform = 'translateY(-100%)';
+                    // Move navbar up smoothly when popup closes
+                    setTimeout(() => {
+                        document.getElementById('navbar').style.top = '1.5rem'; // 24px (top-6)
+                    }, 300);
+                }
+
+                // Counter animation
+                function animateCounter(counter) {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const increment = target / 100;
+                    let current = 0;
+
+                    const updateCounter = () => {
+                        if (current < target) {
+                            current += increment;
+                            counter.textContent = Math.ceil(current);
+                            setTimeout(updateCounter, 20);
+                        } else {
+                            counter.textContent = target;
+                        }
+                    };
+
+                    updateCounter();
+                }
+
+                // Counter observer
+                const counterObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const counters = entry.target.querySelectorAll('.counter');
+                            counters.forEach(counter => {
+                                if (!counter.classList.contains('animated')) {
+                                    counter.classList.add('animated');
+                                    animateCounter(counter);
+                                }
+                            });
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                // Observe statistics section
+                document.addEventListener('DOMContentLoaded', () => {
+                    const statsSection = document.querySelector('.py-20.px-4.bg-slate-800\\/50');
+                    if (statsSection) {
+                        counterObserver.observe(statsSection);
+                    }
+                });
+
+                // Smooth scroll animation observer
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                        }
+                    });
+                }, observerOptions);
+
+                // Observe all elements with animate-on-scroll class
+                document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                    observer.observe(el);
+                });
+
+                // Education timeline animation
+                const educationObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const items = entry.target.querySelectorAll('.education-item');
+                            items.forEach((item, index) => {
+                                setTimeout(() => {
+                                    item.style.opacity = '1';
+                                    item.style.transform = 'translateX(0)';
+                                    item.style.transition = 'all 0.5s ease-out';
+                                }, index * 200);
+                            });
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                educationObserver.observe(document.getElementById('education-timeline'));
+
+                // Active nav link highlighting
+                const sections = document.querySelectorAll('section[id]');
+                const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+                window.addEventListener('scroll', () => {
+                    let current = '';
+                    sections.forEach(section => {
+                        const sectionTop = section.offsetTop;
+                        const sectionHeight = section.clientHeight;
+                        if (scrollY >= (sectionTop - 200)) {
+                            current = section.getAttribute('id');
+                        }
+                    });
+
+                    navLinks.forEach(link => {
+                        link.classList.remove('text-indigo-400');
+                        if (link.getAttribute('href').slice(1) === current) {
+                            link.classList.add('text-indigo-400');
+                        }
+                    });
+
+                    // Back to top button
+                    const backToTop = document.getElementById('backToTop');
+                    if (window.scrollY > 300) {
+                        backToTop.style.opacity = '1';
+                        backToTop.style.transform = 'translateY(0)';
+                    } else {
+                        backToTop.style.opacity = '0';
+                        backToTop.style.transform = 'translateY(16px)';
+                    }
+                });
+
+                // Functions
+                function showDemo() {
+                    alert('This is a demo form. In a real implementation, this would send your message securely!');
+                }
+
+                function openWhatsApp() {
+                    window.open('https://wa.me/1234567890?text=Hello! I would like to discuss a project with you.', '_blank');
+                }
+
+                function scrollToTop() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+
+                function downloadCV() {
+                    alert('CV download would start here! This is a demo.');
+                }
+
+                // Mobile menu functionality
+                document.getElementById('mobile-menu-btn').addEventListener('click', function () {
+                    document.getElementById('mobile-menu').style.transform = 'translateX(0)';
+                });
+
+                document.getElementById('close-mobile-menu').addEventListener('click', function () {
+                    document.getElementById('mobile-menu').style.transform = 'translateX(100%)';
+                });
+
+                // Close mobile menu when clicking on nav links
+                document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                    link.addEventListener('click', function () {
+                        document.getElementById('mobile-menu').style.transform = 'translateX(100%)';
+                    });
+                });
+
+                // Smooth scrolling for navigation links
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const target = document.querySelector(this.getAttribute('href'));
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    });
+                });
+
+                // Particle System
+                function createParticle() {
+                    const particle = document.createElement('div');
+                    particle.className = 'absolute w-1 h-1 bg-indigo-400 rounded-full opacity-60';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.top = '100%';
+                    particle.style.animation = `particleFloat ${Math.random() * 3 + 2}s linear infinite`;
+
+                    document.getElementById('particleSystem').appendChild(particle);
+
+                    setTimeout(() => {
+                        if (particle.parentNode) {
+                            particle.parentNode.removeChild(particle);
+                        }
+                    }, 5000);
+                }
+
+                // Matrix Rain Effect
+                function createMatrixRain() {
+                    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+                    const matrixContainer = document.getElementById('matrixRain');
+
+                    for (let i = 0; i < 20; i++) {
+                        const column = document.createElement('div');
+                        column.className = 'absolute text-green-400 text-xs font-mono';
+                        column.style.left = Math.random() * 100 + '%';
+                        column.style.animation = `matrixRain ${Math.random() * 10 + 10}s linear infinite`;
+                        column.style.animationDelay = Math.random() * 5 + 's';
+
+                        let text = '';
+                        for (let j = 0; j < 20; j++) {
+                            text += chars[Math.floor(Math.random() * chars.length)] + '<br>';
+                        }
+                        column.innerHTML = text;
+
+                        matrixContainer.appendChild(column);
+                    }
+                }
+
+                // Liquid Animation for buttons
+                function addLiquidEffect(element) {
+                    element.addEventListener('mouseenter', function () {
+                        this.style.animation = 'liquidMove 0.6s ease-in-out';
+                    });
+
+                    element.addEventListener('mouseleave', function () {
+                        this.style.animation = '';
+                    });
+                }
+
+                // Initialize animated graphics
+                function initAnimatedGraphics() {
+                    // Start particle system
+                    setInterval(createParticle, 500);
+
+                    // Create matrix rain
+                    createMatrixRain();
+
+                    // Add liquid effects to buttons
+                    document.querySelectorAll('button').forEach(addLiquidEffect);
+
+                    // Add glitch effect to random elements
+                    setInterval(() => {
+                        const elements = document.querySelectorAll('h1, h2, h3');
+                        const randomElement = elements[Math.floor(Math.random() * elements.length)];
+                        if (randomElement && Math.random() < 0.1) {
+                            randomElement.style.animation = 'glitchEffect 0.3s ease-in-out';
+                            setTimeout(() => {
+                                randomElement.style.animation = '';
+                            }, 300);
+                        }
+                    }, 5000);
+                }
+
+                // Draggable icons functionality
+                let draggedElement = null;
+                let offset = { x: 0, y: 0 };
+
+                document.querySelectorAll('.draggable-icon').forEach(icon => {
+                    icon.addEventListener('mousedown', function (e) {
+                        draggedElement = this;
+                        const rect = this.getBoundingClientRect();
+                        offset.x = e.clientX - rect.left;
+                        offset.y = e.clientY - rect.top;
+
+                        // Pause animation while dragging
+                        this.style.animationPlayState = 'paused';
+                        this.style.zIndex = '1000';
+                        this.style.opacity = '0.8';
+                        this.style.transform = 'scale(1.1)';
+                        this.style.transition = 'transform 0.2s ease';
+
+                        e.preventDefault();
+                    });
+                });
+
+                document.addEventListener('mousemove', function (e) {
+                    if (draggedElement) {
+                        const heroSection = document.getElementById('home');
+                        const heroRect = heroSection.getBoundingClientRect();
+
+                        // Calculate new position relative to hero section
+                        let newX = e.clientX - heroRect.left - offset.x;
+                        let newY = e.clientY - heroRect.top - offset.y;
+
+                        // Keep icons within hero section bounds
+                        newX = Math.max(0, Math.min(newX, heroRect.width - 60));
+                        newY = Math.max(0, Math.min(newY, heroRect.height - 60));
+
+                        draggedElement.style.left = newX + 'px';
+                        draggedElement.style.top = newY + 'px';
+                        draggedElement.style.right = 'auto';
+                        draggedElement.style.bottom = 'auto';
+                    }
+                });
+
+                document.addEventListener('mouseup', function () {
+                    if (draggedElement) {
+                        // Resume animation and reset styles
+                        draggedElement.style.animationPlayState = 'running';
+                        draggedElement.style.zIndex = 'auto';
+                        draggedElement.style.opacity = '';
+                        draggedElement.style.transform = '';
+                        draggedElement.style.transition = '';
+
+                        draggedElement = null;
+                    }
+                });
+
+                // Touch support for mobile
+                document.querySelectorAll('.draggable-icon').forEach(icon => {
+                    icon.addEventListener('touchstart', function (e) {
+                        draggedElement = this;
+                        const touch = e.touches[0];
+                        const rect = this.getBoundingClientRect();
+                        offset.x = touch.clientX - rect.left;
+                        offset.y = touch.clientY - rect.top;
+
+                        this.style.animationPlayState = 'paused';
+                        this.style.zIndex = '1000';
+                        this.style.opacity = '0.8';
+                        this.style.transform = 'scale(1.1)';
+
+                        e.preventDefault();
+                    });
+                });
+
+                document.addEventListener('touchmove', function (e) {
+                    if (draggedElement) {
+                        const touch = e.touches[0];
+                        const heroSection = document.getElementById('home');
+                        const heroRect = heroSection.getBoundingClientRect();
+
+                        let newX = touch.clientX - heroRect.left - offset.x;
+                        let newY = touch.clientY - heroRect.top - offset.y;
+
+                        newX = Math.max(0, Math.min(newX, heroRect.width - 60));
+                        newY = Math.max(0, Math.min(newY, heroRect.height - 60));
+
+                        draggedElement.style.left = newX + 'px';
+                        draggedElement.style.top = newY + 'px';
+                        draggedElement.style.right = 'auto';
+                        draggedElement.style.bottom = 'auto';
+
+                        e.preventDefault();
+                    }
+                });
+
+                document.addEventListener('touchend', function () {
+                    if (draggedElement) {
+                        draggedElement.style.animationPlayState = 'running';
+                        draggedElement.style.zIndex = 'auto';
+                        draggedElement.style.opacity = '';
+                        draggedElement.style.transform = '';
+
+                        draggedElement = null;
+                    }
+                });
+            </script>
+            <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'96b6aa52970a9b97',t:'MTc1NDU2ODU2OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+            <script>
+                // Close button functionality
+                const closeBtn = document.getElementById('close-offer');
+                const offerPopup = document.getElementById('offer-popup');
+
+                closeBtn.addEventListener('click', () => {
+                    offerPopup.classList.add('closed');
+                    // Optionally, adjust body padding if you want to remove the reserved space
+                    document.body.style.paddingTop = '0';
+                });
+            </script>
+
+            <script>
+                window.addEventListener('load', () => {
+                    setTimeout(() => {
+                        const offerPopup = document.getElementById('offer-popup');
+                        offerPopup.classList.remove('hidden');
+                    }, 1000);
+                });
+
+                document.getElementById('close-offer').addEventListener('click', () => {
+                    const offerPopup = document.getElementById('offer-popup');
+                    offerPopup.classList.add('hidden');
+                });
+            </script>
+            <script>
+                const cursor = document.querySelector('.cursor');
+
+                // Move custom cursor with mouse
+                window.addEventListener('mousemove', e => {
+                    cursor.style.left = e.clientX + 'px';
+                    cursor.style.top = e.clientY + 'px';
+                });
+
+                // Cursor hover effects on elements
+                const hoverBtn = document.querySelectorAll('.btn-hover');
+                const hoverLink = document.querySelectorAll('.link-hover');
+                const specialArea = document.querySelectorAll('.special-area');
+
+                function addCursorClass(elements, className) {
+                    elements.forEach(el => {
+                        el.addEventListener('mouseenter', () => {
+                            cursor.classList.add(className);
+                        });
+                        el.addEventListener('mouseleave', () => {
+                            cursor.classList.remove(className);
+                        });
+                    });
+                }
+
+                addCursorClass(hoverBtn, 'hover-btn');
+                addCursorClass(hoverLink, 'hover-link');
+                addCursorClass(specialArea, 'hover-special');
+
+            </script>
+            <script>
+                const messageBtn = document.getElementById('message-btn');
+                const contactOptions = document.getElementById('contact-options');
+                const closeOptionsBtn = document.getElementById('close-options-btn');
+
+                const toggleOptions = () => {
+                    messageBtn.classList.toggle('open');
+                    contactOptions.classList.toggle('hidden');
+                };
+
+                messageBtn.addEventListener('click', toggleOptions);
+                closeOptionsBtn.addEventListener('click', toggleOptions);
+
+
+                // Click outside to close the options
+                document.addEventListener('click', (e) => {
+                    if (!messageBtn.contains(e.target) && !contactOptions.contains(e.target) && !closeOptionsBtn.contains(e.target)) {
+                        if (!contactOptions.classList.contains('hidden')) {
+                            toggleOptions();
+                        }
+                    }
+                });
+
+            </script>
+            <script>
+                const messageContainer = document.querySelector('.message-container');
+                document.addEventListener('DOMContentLoaded', () => {
+                    const messageBtn = document.getElementById('message-btn');
+                    const contactOptions = document.getElementById('contact-options');
+                    const messageContainer = document.querySelector('.message-container');
+
+                    window.addEventListener('load', () => {
+                        setTimeout(() => {
+                            messageContainer.style.display = 'block';
+                        }, 1000);
+                    });
+
+                    messageBtn.addEventListener('click', () => {
+                        contactOptions.classList.toggle('hidden');
+                    });
+
+                    document.addEventListener('click', (e) => {
+                        if (!messageBtn.contains(e.target) && !contactOptions.contains(e.target)) {
+                            contactOptions.classList.add('hidden');
+                        }
+                    });
+                });
+
+
+                window.addEventListener('load', () => {
+                    setTimeout(() => {
+                        messageContainer.style.display = 'block';
+                    }, 1000);
+                });
+
+                messageBtn.addEventListener('click', () => {
+                    contactOptions.classList.toggle('hidden');
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!messageBtn.contains(e.target) && !contactOptions.contains(e.target)) {
+                        contactOptions.classList.add('hidden');
+                    }
+                });
+            </script>
+            <script>
+                document.addEventListener("contextmenu", e => e.preventDefault());
+                // Disable right-click
+                document.addEventListener("contextmenu", e => e.preventDefault());
+
+                // Disable common "view source" & "inspect" shortcuts
+                document.addEventListener("keydown", e => {
+                    // F12
+                    if (e.key === "F12") {
+                        e.preventDefault();
+                    }
+                    // Ctrl+Shift+I / Ctrl+Shift+J / Ctrl+Shift+C
+                    if (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase())) {
+                        e.preventDefault();
+                    }
+                    // Ctrl+U
+                    if (e.ctrlKey && e.key.toUpperCase() === "U") {
+                        e.preventDefault();
+                    }
+                });
+            </script>
+            <script>
+                history.pushState(null, null, location.href);
+                window.onpopstate = function () {
+                    history.go(1); // Forces forward navigation if back button is pressed
+                };
+            </script>
+            <style>
+                body {
+                    -webkit-user-select: none;
+                    /* Disable text selection */
+                    -webkit-touch-callout: none;
+                    /* Disable long press menu on mobile */
+                    -webkit-user-drag: none;
+                    /* Disable image dragging */
+                    user-select: none;
+                }
+
+                img {
+                    pointer-events: none;
+                    /* Prevent dragging images */
+                }
+            </style>
+            <style>
+                @media print {
+                    body {
+                        display: none;
+                    }
+                }
+            </style>
+            <script>
+                document.addEventListener("keydown", function (e) {
+                    if (e.ctrlKey && e.key.toLowerCase() === "s") {
+                        e.preventDefault();
+                    }
+                });
+            </script>
+
+
+</body>
+
+</html>
