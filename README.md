@@ -1,32 +1,32 @@
-# 👋 Welcome
+# 👋 Welcome!
+
+### Creative Graphic Designer | Front-End Developer | UCSC Student
 
 ---
 
 ## 🎨 About Me
 
-Hi, I’m Hamdhan Murshid — Creative Graphic Designer | Front-End Developer | Student of UCSC
-
-Driven by a passion for merging aesthetics with technology, I specialize in crafting intuitive digital experiences and standout brand visuals. My journey combines hands-on design expertise and front-end development skills, all fueled by curiosity and a relentless pursuit of innovation.
+Hi, I’m Hamdhan Murshid — Creative Graphic Designer | Front-End Developer | Student of UCSC Driven by a passion for merging aesthetics with technology, I specialize in crafting intuitive digital experiences and standout brand visuals. My journey combines hands-on design expertise and front-end development skills, all fueled by curiosity and a relentless pursuit of innovation.
 
 ---
 
 ## 💼 What I Do
 
-- **Graphic Design:** Brand identity, UI/UX, posters, digital assets
-- **Front-End Development:** HTML, CSS, JavaScript, React
+- **Graphic Design:** Brand identity, UI/UX, posters, digital assets -
+- **Front-End Development:** HTML, CSS, JavaScript, React -
 - **Creative Tools:** Figma, Adobe XD, Photoshop, Illustrator
 
 ---
 
 ## 🚀 Projects & Highlights
 
-- 🌱 **Currently mastering:** Advanced Front-End & Backend
-- 🎯 **Career goal:** Full-Stack Creative Developer
-- 🤝 **Open to:** Collaboration on creative coding and design projects
+- 🌱 **Currently mastering:** Advanced Front-End & Backend Development  
+- 🎯 **Career goal:** Full-Stack Creative Developer  
+- 🤝 **Open to:** Collaboration on creative coding and design projects  
 
 ---
 
-## 🖥️ Most Used Software
+## 🖥️ Tools & Software
 
 <p align="left">
   <img src="https://img.shields.io/badge/Adobe%20Photoshop-31A8FF?style=for-the-badge&logo=adobe-photoshop&logoColor=white"/>
@@ -40,17 +40,17 @@ Driven by a passion for merging aesthetics with technology, I specialize in craf
 
 ## 📈 GitHub Stats
 
-![classicbeatz1111's GitHub Stats](https://github-readme-stats.vercel.app/api?username=classicbeatz1111&show_icons=true&theme=material-palenight)
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=classicbeatz1111&layout=compact&theme=material-palenight)
+![classicbeatz1111's GitHub Stats](https://github-readme-stats.vercel.app/api?username=classicbeatz1111&show_icons=true&theme=material-palenight) ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=classicbeatz1111&layout=compact&theme=material-palenight)
+
 
 ---
 
 ## 🌐 Connect With Me
 
-- **Portfolio:** (https://hamdhanmurshid.netlify.app/
-- **Instagram:** (https://www.instagram.com/classicbeatzofficialz/)
-- **Instagram:** (https://www.instagram.com/classicbeatzofficialz/)](https://www.instagram.com/cloudgrafix/)
-- **LinkedIn:**  (https://www.linkedin.com)
+- **Portfolio:** https://hamdhanmurshid.netlify.app/ 
+- **Instagram:** https://www.instagram.com/cloudgrafix/
+- **Instagram:** https://www.instagram.com/classicbeatzofficialz/
+- **LinkedIn:** https://www.linkedin.com
 - **Email:** classicbeatz1111@gmail.com
 
 ---
